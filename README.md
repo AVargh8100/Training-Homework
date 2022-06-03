@@ -24,7 +24,7 @@ What is a closure?
 
 What is the difference between a class and a struct?
 -classes are reference types and structs are value types
--use classes when you control identity and use structure when you dont
+-use classes when you control identity and use structure use structures to adopt behavior by sharing implementations
 
 What is the syntax '??' do?
 - returns the first none nil value of the 2 swift variables 
