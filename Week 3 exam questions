@@ -1,0 +1,28 @@
+1. What is URLSession?
+-it is what allows us to give and receive requests to get data  
+
+2. What is Codable?
+- it allows us to know if a struct, enum, or class can be encoded into json data
+
+3. Can you describe how the Result Type works?
+- it is a datatype that is returned as either a success or an error
+
+4. How do delegates work in iOS?
+A delegate is a controller object that has a defined interface that allows us to modify another object
+5. What is an escaping closure (how does it work) ?
+-escaping closures are used when the closure needs to outlive the function.
+
+6. Why do we use coding keys in iOS?
+-if you want to use a different variable name than what the json uses and because we have rules for naming variables that json does not have
+
+7. How would you make a network call in iOS?
+-I would make a request with given url and first handle the errors such as bad data or invalid urls. Then I would do try for jsondecoder. I prefer using the result type.
+
+8. What is GCD?
+- optimize application support for systems with multi-core processors and other symmetric multiprocessing systems. It is an implementation of task parallelism based on the thread pool pattern
+
+9. How do you add extra functionality to existing classes/protocols etc in Swift, why would you do that?
+-you would need to extend the class/ make subclasses. we do this to organize code and if we don’t have access to the original code
+
+10. What is MVC?
+- model-view-controller design philosophy.
