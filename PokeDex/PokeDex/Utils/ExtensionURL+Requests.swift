@@ -13,7 +13,7 @@ extension URLSession{
             completion(.failure(RequestError.badUrl))
             return
         }
-        let urlRequest = URLRequest(url: url, timeoutInterval: 10)
+       let urlRequest = URLRequest(url: url, timeoutInterval: 10)
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error = error{
                 completion(.failure(RequestError.failed(error: error)))

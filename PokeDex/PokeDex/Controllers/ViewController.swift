@@ -41,6 +41,7 @@ class ViewController: UIViewController {
             case .success(let result):
                 DispatchQueue.main.async {
                     let name = result["name"] as! String
+                    let id = result["id"] as! Int
                     let sprites = result["sprites"] as! [String:Any]
                     let spriteUrl = sprites["front_default"] as! String
                     let typeObj = result["types"] as! [[String:Any]]
@@ -58,8 +59,14 @@ class ViewController: UIViewController {
                         baseStats.append(baseStat)
              
                     }
+                    let moveObj = result["moves"] as! [[String:Any]]
+                    var moves:[String] = []
+                    for item in moveObj{
+                        let move = item["move"] as! [String: String]
+                        moves.append(move["name"]!)
+                    }
                     
-                    let pokemonInfo = Pokemon(name: name, spriteUrl: spriteUrl, types: types,  baseStats: baseStats)
+                    let pokemonInfo = Pokemon(name: name, spriteUrl: spriteUrl, types: types,  baseStats: baseStats, id: id, moves: moves)
                     self.pokemon.append(pokemonInfo)
                     self.scrollMax = self.offset == 150
                     self.offset = self.offset + 1 <= 150 ? self.offset + 1 : 150
@@ -75,23 +82,12 @@ class ViewController: UIViewController {
             
             
             
-        }
+            }
         
         }
     }
     
-    
-    
-    
-    }
-
-
-
-
-
-
-
-
+}
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
     

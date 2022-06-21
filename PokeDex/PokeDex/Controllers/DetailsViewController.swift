@@ -9,9 +9,13 @@ import Foundation
 import UIKit
 
 class DetailsViewControll: UIViewController{
+   
     
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var pokeImg: UIImageView!
+    
+
     
     @IBOutlet weak var hpStat: UILabel!
     
@@ -24,6 +28,14 @@ class DetailsViewControll: UIViewController{
     @IBOutlet weak var specDefenseStat: UILabel!
     
     @IBOutlet weak var speedStat: UILabel!
+
+    @IBOutlet weak var name: UILabel!
+    
+    @IBOutlet weak var pokeId: UILabel!
+    
+    @IBOutlet weak var pokeType: UILabel!
+    
+    
     
     var pokeInfo: Pokemon?
     
@@ -36,8 +48,40 @@ class DetailsViewControll: UIViewController{
         specAttackStat.text = "SP. ATT: \((pokeInfo?.baseStats[3])!)"
         specDefenseStat.text = "SP. DEF: \((pokeInfo?.baseStats[4])!)"
         speedStat.text = "SPD: \((pokeInfo?.baseStats[5])!)"
+        
+        name.text = "\((pokeInfo?.name)!)"
+        pokeId.text = "ID: \((pokeInfo?.id)!)"
+        pokeType.text  = "\((pokeInfo?.types.joined(separator: "/").capitalized)!)"
+        setUpTableView()
     }
+    
+    
+    
+    func setUpTableView(){
+         tableView.delegate = self
+         tableView.dataSource = self
+         
+     }
 
+    
+    
+    
+}
+extension DetailsViewControll: UITableViewDelegate, UITableViewDataSource{
+   
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pokeInfo!.moves.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "moveCell", for: indexPath)
+
+        cell.textLabel?.text = pokeInfo?.moves[indexPath.row].capitalized
+        return cell
+    }
+    
+    
     
     
     

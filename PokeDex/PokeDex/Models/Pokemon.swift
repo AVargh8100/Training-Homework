@@ -12,6 +12,8 @@ struct Pokemon{
     let types: [String]
     //let stats: [String]
     let baseStats: [Int]
+    let id: Int
+    let moves: [String]
 }
         /* let url: String?
     init(name:String, url: String){
